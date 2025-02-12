@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../services/pokemon.service';
 import { Router } from '@angular/router';
-import { Pokemon } from '../modelo/pokemon.modelo';
-
+import { Pokemon } from '../modelo/pokemonInterface';
 
 @Component({
   selector: 'app-home',
@@ -15,60 +14,54 @@ export class HomePage implements OnInit {
   limit = 20;
   offset = 0;
   searchTerm: string = '';
+  currentPage: number = 1;
+  totalPokemons: number = 0;
+  pageSize: number = 20;
 
   constructor(private pokemonService: PokemonService, private router: Router) {}
 
   ngOnInit() {
     this.loadPokemon();
-  }
-
-  loadPokemon() {
-    this.pokemonService.getPokemonList(this.limit, this.offset).subscribe(response => {
-      this.pokemonList = response.results.map((pokemon: any) => {
-        const id = pokemon.url.split('/')[6];
-        return {
-          name: pokemon.name,
-          image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
-          id: id
-        };
+    this.pokemonService.getTotalPokemonCount()
+      .then((count: number) => {
+        this.totalPokemons = count;
+        console.log('Total de Pokémon:', this.totalPokemons);
+      })
+      .catch((error: string) => {
+        console.error('Error al obtener el total de Pokémon:', error);
       });
-    });
   }
 
-  searchPokemon(event: any) {
-    const searchTerm = event.target.value.toLowerCase().trim();
-    if (!searchTerm) {
-      this.loadPokemon();
-      return;
-    }
-
-    this.pokemonService.getPokemonDetails(searchTerm).subscribe(
-      (response) => {
-        this.pokemonList = [{
-          name: response.name,
-          image: response.sprites.front_default,
-          id: response.id
-        }];
-      },
-      (error) => {
-        this.pokemonList = [];
-      }
-    );
+  loadPokemon(): void {
+    this.pokemonService.getPokemonsPaginados(this.pageSize, (this.currentPage - 1) * this.pageSize)
+      .then((pokemons: Pokemon[]) => {
+        this.pokemonList = pokemons;
+        console.log('Lista de Pokémon cargada:', this.pokemonList);
+      })
+      .catch((error: string) => {
+        console.error('Error al cargar Pokémon:', error);
+      });
   }
 
-  nextPage() {
-    this.offset += this.limit;
+  goToFirstPage(): void {
+    this.currentPage = 1;
     this.loadPokemon();
   }
 
-  prevPage() {
-    if (this.offset >= this.limit) {
-      this.offset -= this.limit;
+  goToPreviousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
       this.loadPokemon();
     }
   }
 
-  viewDetails(name: string) {
-    this.router.navigate(['/pokemon-details', name]);
+  goToNextPage(): void {
+    this.currentPage++;
+    this.loadPokemon();
+  }
+
+  goToLastPage(): void {
+    this.currentPage = Math.ceil(this.totalPokemons / this.pageSize);
+    this.loadPokemon();
   }
 }
