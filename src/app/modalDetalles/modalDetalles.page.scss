@@ -40,3 +40,72 @@ ion-header {
   ion-card-content p strong {
     color: #3b4cca;
   }
+  
+  /* Estilos específicos para cada tipo de Pokémon */
+  .fire {
+    --background: #fddfdf;
+  }
+  
+  .water {
+    --background: #d0e7ff;
+  }
+  
+  .grass {
+    --background: #dfffd6;
+  }
+  
+  .electric {
+    --background: #fffacc;
+  }
+  
+  .ice {
+    --background: #e0f7ff;
+  }
+  
+  .fighting {
+    --background: #ffe0e0;
+  }
+  
+  .poison {
+    --background: #f5e0ff;
+  }
+  
+  .ground {
+    --background: #f5e0c0;
+  }
+  
+  .flying {
+    --background: #e0f0ff;
+  }
+  
+  .psychic {
+    --background: #ffe0f0;
+  }
+  
+  .bug {
+    --background: #f0ffe0;
+  }
+  
+  .rock {
+    --background: #e0e0e0;
+  }
+  
+  .ghost {
+    --background: #e0e0f5;
+  }
+  
+  .dragon {
+    --background: #e0f0ff;
+  }
+  
+  .dark {
+    --background: #d0d0d0;
+  }
+  
+  .steel {
+    --background: #f0f0f0;
+  }
+  
+  .fairy {
+    --background: #ffe0ff;
+  }

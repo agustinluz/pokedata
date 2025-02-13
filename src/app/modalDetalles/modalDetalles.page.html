@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [ngClass]="tipoClase">
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -20,7 +20,7 @@
             <p><strong>Tipos:</strong> {{ pokemon.tipos.join(', ') }}</p>
             <p><strong>Altura:</strong> {{ pokemon.altura }} m</p>
             <p><strong>Peso:</strong> {{ pokemon.peso }} kg</p>
-            <p><strong>Habilidades:</strong> {{ pokemon.habilidades }}</p>
+            <p><strong>Habilidades:</strong> {{ pokemon.habilidades.join(', ') }}</p>
           </ion-card-content>
         </ion-card>
       </ion-col>

@@ -6,7 +6,7 @@ export class PokemonClass implements Pokemon  {
         public nombre: string ,
         public imagen: string,
         public tipos: string[],
-        public habilidades: string,
+        public habilidades: string[],
         public peso: string,
         public altura: string
     ) {
