@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../services/pokemon.service';
 import { Router } from '@angular/router';
 import { Pokemon } from '../modelo/pokemonInterface';
+import { ModalController } from '@ionic/angular';
+import { ModalDetallesPageModule } from '../modalDetalles/modalDetalles.module';
+import { ModalDetallesPage } from '../modalDetalles/modalDetalles.page';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +21,7 @@ export class HomePage implements OnInit {
   totalPokemons: number = 0;
   pageSize: number = 20;
 
-  constructor(private pokemonService: PokemonService, private router: Router) {}
+  constructor(private pokemonService: PokemonService, private router: Router, private modalCtrl:ModalController) {}
 
   ngOnInit() {
     this.loadPokemon();
@@ -64,4 +67,17 @@ export class HomePage implements OnInit {
     this.currentPage = Math.ceil(this.totalPokemons / this.pageSize);
     this.loadPokemon();
   }
+
+
+
+  async abrirModal(pokemonId: number) {
+    const PokemonLista = this.pokemonList.find(p => p.id === pokemonId);
+    if (!PokemonLista) return;
+    const modal = await this.modalCtrl.create({
+      component: ModalDetallesPage,
+      componentProps: { pokemon: PokemonLista }
+    });
+    return modal.present();
+  }
+    
 }

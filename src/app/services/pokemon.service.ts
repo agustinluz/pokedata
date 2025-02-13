@@ -22,16 +22,18 @@ export class PokemonService {
     return this.http.get(`${this.apiUrl}/${id}`).toPromise()
         .then((data: any) => {
             return {
-                types: data.types.map((t: any) => t.type.name).join(', '), 
-                abilities: data.abilities.map((a: any) => a.ability.name).join(', '),
-                weight: data.weight,
-                height: data.height
+                tipos: data.types.map((t: any) => t.type.name), 
+                habilidades: data.abilities.map((a: any) => a.ability.name),
+                peso: data.weight,
+                altura: data.height,
+                nombre: data.name,
+                imagen: data.sprites.front_default
             };
         })
         .catch(() => {
-            return { types: '', abilities: '', weight: '', height: '' }; 
+            return { tipos: [], habilidades: [], peso: '', altura: '', nombre: '', imagen: '' }; 
         });
-}
+  }
   
   getPokemonsPaginados(limit: number, offset: number): Promise<Pokemon[]> {
     return new Promise<Pokemon[]>((resolve, reject) => {

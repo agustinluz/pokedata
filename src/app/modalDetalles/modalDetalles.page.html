@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalles de {{ pokemon.nombre }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <img [src]="pokemon.imagen" alt="{{ pokemon.nombre }}">
+          <ion-card-header>
+            <ion-card-title>{{ pokemon.nombre }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p><strong>Tipos:</strong> {{ pokemon.tipos.join(', ') }}</p>
+            <p><strong>Altura:</strong> {{ pokemon.altura }} m</p>
+            <p><strong>Peso:</strong> {{ pokemon.peso }} kg</p>
+            <p><strong>Habilidades:</strong> {{ pokemon.habilidades }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Pokédex</ion-title>
@@ -9,7 +8,7 @@
   <ion-grid>
     <ion-row>
       <ion-col size="4" *ngFor="let pokemon of pokemonList">
-        <ion-card class="card-julioverne">
+        <ion-card class="card-julioverne" (click)="abrirModal(pokemon.id)">
           <ion-card-content>
             <ion-row class="pokemon-img">
               <img [src]="pokemon.imagen" class="pokemon-img">

@@ -1,27 +1,52 @@
-#container {
+ion-header {
+  ion-toolbar {
+    background-color: #ffcb05;
+    color: #3b4cca;
+  }
+}
+
+ion-content {
+  --background: #f5f5f5;
+}
+
+.card-julioverne {
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.card-julioverne:hover {
+  transform: scale(1.05);
+}
+
+.pokemon-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
+
+.pokemon-img img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.pokemon-name {
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #3b4cca;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
+.footer-julioverne {
+  ion-toolbar {
+    background-color: #ffcb05;
+    color: #3b4cca;
+  }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+  .footer-title {
+    text-align: center;
+    font-weight: bold;
+  }
 }
