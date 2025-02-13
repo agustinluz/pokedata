@@ -2,22 +2,30 @@ ion-header {
   ion-toolbar {
     background-color: #ffcb05;
     color: #3b4cca;
+    ion-title {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
   }
 }
 
 ion-content {
   --background: #f5f5f5;
+  padding: 10px;
 }
 
 .card-julioverne {
   margin: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: linear-gradient(135deg, #ffcb05 0%, #3b4cca 100%);
+  color: #fff;
 }
 
 .card-julioverne:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
 .pokemon-img {
@@ -25,18 +33,24 @@ ion-content {
   justify-content: center;
   align-items: center;
   height: 150px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .pokemon-img img {
   max-height: 100%;
   max-width: 100%;
+  border-radius: 50%;
+  border: 2px solid #fff;
 }
 
 .pokemon-name {
   text-align: center;
   font-weight: bold;
-  font-size: 1.2em;
-  color: #3b4cca;
+  font-size: 1.5em;
+  color: #fff;
+  padding: 10px 0;
 }
 
 .footer-julioverne {
@@ -48,5 +62,18 @@ ion-content {
   .footer-title {
     text-align: center;
     font-weight: bold;
+  }
+
+  ion-button {
+    --background: #3b4cca;
+    --color: #fff;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  ion-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   }
 }

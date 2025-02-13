@@ -72,6 +72,40 @@ export class PokemonService {
   getPokemonId(url: string): number {
     return parseInt(url.split('/').filter(part => part).pop()||"0", 10);
   }
+  getAllPokemons(): Promise<Pokemon[]> {
+    return new Promise<Pokemon[]>((resolve, reject) => {
+        this.http.get(`${this.apiUrl}?limit=1000`).toPromise()
+            .then(async (data: any) => {
+                if (!data.results) {
+                    reject("No se encontraron Pokémon");
+                    return;
+                }
+                let Pokemons: Pokemon[] = [];
+
+                for (const poke of data.results) {
+                    const partes = poke.url.split("/");
+                    const id = Number(partes[partes.length - 2]);
+                    const pokemonData = await this.getPokemonDetails(id);
+
+                    Pokemons.push({
+                        id: id,
+                        nombre: pokemonData.nombre,
+                        imagen: pokemonData.imagen,
+                        tipos: pokemonData.tipos,
+                        habilidades: pokemonData.habilidades,
+                        peso: pokemonData.peso,
+                        altura: pokemonData.altura
+                    });
+                }
+                console.log("Todos los Pokémons procesados:", Pokemons);
+                resolve(Pokemons);
+            })
+            .catch((error: Error) => {
+                reject(error.message);
+            });
+    });
+  }
+
 
   getTotalPokemonCount(): Promise<number> {
     return new Promise<number>((resolve, reject) => {

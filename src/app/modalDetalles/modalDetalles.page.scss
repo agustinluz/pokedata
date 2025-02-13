@@ -12,7 +12,13 @@ ion-header {
   ion-card {
     margin: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  ion-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
   
   ion-card-header {
@@ -43,69 +49,69 @@ ion-header {
   
   /* Estilos específicos para cada tipo de Pokémon */
   .fire {
-    --background: #fddfdf;
+    --background: #ffcccb;
   }
   
   .water {
-    --background: #d0e7ff;
+    --background: #add8e6;
   }
   
   .grass {
-    --background: #dfffd6;
+    --background: #98fb98;
   }
   
   .electric {
-    --background: #fffacc;
+    --background: #fffacd;
   }
   
   .ice {
-    --background: #e0f7ff;
+    --background: #b0e0e6;
   }
   
   .fighting {
-    --background: #ffe0e0;
+    --background: #f08080;
   }
   
   .poison {
-    --background: #f5e0ff;
+    --background: #dda0dd;
   }
   
   .ground {
-    --background: #f5e0c0;
+    --background: #f4a460;
   }
   
   .flying {
-    --background: #e0f0ff;
+    --background: #87ceeb;
   }
   
   .psychic {
-    --background: #ffe0f0;
+    --background: #ffb6c1;
   }
   
   .bug {
-    --background: #f0ffe0;
+    --background: #f0e68c;
   }
   
   .rock {
-    --background: #e0e0e0;
+    --background: #d3d3d3;
   }
   
   .ghost {
-    --background: #e0e0f5;
+    --background: #778899;
   }
   
   .dragon {
-    --background: #e0f0ff;
+    --background: #b0c4de;
   }
   
   .dark {
-    --background: #d0d0d0;
+    --background: #a9a9a9;
   }
   
   .steel {
-    --background: #f0f0f0;
+    --background: #c0c0c0;
   }
   
   .fairy {
-    --background: #ffe0ff;
+    --background: #ffb6c1;
   }
